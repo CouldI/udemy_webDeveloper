@@ -1,0 +1,136 @@
+<HTML>
+
+<HEAD>
+<TITLE> 선택한 항목에 따라 바뀌는 드롭다운박스</TITLE>
+</HEAD>
+
+<BODY>
+
+<!------ 아래의 방식으로 스크립트나 HTML 태그를 붙여 넣으세요 ------------------->
+
+<FORM name="isc">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr align="center"> 
+    <td nowrap height="11"> &nbsp;
+
+<select name="example" size="1" onChange="redirect(this.options.selectedIndex);expView(this)">
+<option selected>---인원을 선택하세요-------------</option>
+<option>2명</option>
+<option>3명</option>
+<option>4명</option>
+<option>5명</option>
+<option>6명</option>
+<option>7명</option>
+<option>8명</option>
+<option>9명</option>
+</select>
+
+<select name="stage2" size="1" onChange="redirect1(this.options.selectedIndex);expView(this)">
+<option value=" " selected> </option>
+<option value=" " selected>---두번째 항목--------------</option>
+<option value=" " selected>---두번째 항목--------------</option>
+</select>
+
+<select name="stage3" size="1" onChange="expView(this)">
+<option value=" " selected> </option>
+<option value=" " selected>---세번째 항목----------------</option>
+<option value=" " selected>---세번째 항목----------------</option>
+</select>
+
+<input type="text" name="exp">
+<script>
+<!--
+
+var groups=document.isc.example.options.length //첫번째 항목의 갯수
+var group=new Array(groups)      //첫번째 항목의 갯수만큼 1차원 배열 선언.
+for (i=0; i<groups; i++)      //배열번지수에 배열 선언
+group[i]=new Array()
+
+group[0][0]=new Option("---두번째 항목---"," ");
+
+group[1][0]=new Option("항목을 선택 하세요"," ");
+group[1][1]=new Option("외국 엔진들");
+group[1][2]=new Option("국내 엔진들");
+group[1][3]=new Option("기타 엔진들");
+
+
+group[2][0]=new Option("항목을 선택 하세요"," ");
+group[2][1]=new Option("신문사","115");
+group[2][2]=new Option("방송사","116");
+
+var temp=document.isc.stage2
+
+function expView(obj) {
+  document.isc.exp.value = obj.name + "의 index(" + obj.options.selectedIndex + ")을 선택하셨군요.";
+}
+
+function redirect(x){
+for (m=temp.options.length-1;m>0;m--)
+ temp.options[m]=null
+ for (i=0;i<group[x].length;i++)
+ {
+  temp.options[i]=new Option(group[x][i].text,group[x][i].value)
+ }
+ temp.options[0].selected=true
+ redirect1(0)
+}
+
+var secondGroups=document.isc.stage2.options.length
+var secondGroup=new Array(groups)
+for (i=0; i<groups; i++)  
+{
+ secondGroup[i]=new Array(group[i].length)
+ for (j=0; j<group[i].length; j++)  {
+ secondGroup[i][j]=new Array()  
+ }
+}
+
+secondGroup[0][0][0]=new Option("---세번째 항목---"," ");
+secondGroup[1][0][0]=new Option("---세번째 항목---"," ");
+//검색엔진 > 외국 엔진들
+secondGroup[1][1][0]=new Option("항목을 선택 하세요"," ");
+secondGroup[1][1][1]=new Option("YAHOO","");
+secondGroup[1][1][2]=new Option("Lycos","http://www.lycos.com/"); 
+secondGroup[1][1][3]=new Option("Altavista","http://www.altavista.com");
+//검색엔진 > 국내 엔진들
+secondGroup[1][2][0]=new Option("항목을 선택 하세요"," ");
+secondGroup[1][2][1]=new Option("야후! 코리아","http://www.yahoo.co.kr");
+secondGroup[1][2][2]=new Option("라이코스 코리아","http://www.lycos.co.kr");
+secondGroup[1][2][3]=new Option("네이버","http://www.naver.com/");
+//검색엔진 > 기타 엔진들
+secondGroup[1][3][0]=new Option("항목을 선택 하세요"," ");
+secondGroup[1][3][1]=new Option("MP3 검색","http://www.mp3.com");
+secondGroup[1][3][2]=new Option("크랙/시리얼","http://www.astalavista.com/");
+
+//언론방송 > 신문사
+secondGroup[2][0][0]=new Option("---Select 3---"," ");
+secondGroup[2][1][0]=new Option("항목을 선택 하세요"," ");
+secondGroup[2][1][1]=new Option("한겨레신문","http://www.hani.com");
+secondGroup[2][1][2]=new Option("조선일보","http://www.chosun.com");
+secondGroup[2][1][3]=new Option("동아일보","http://www.dongailbo.com");
+//언론방송 > 방송사
+secondGroup[2][2][0]=new Option("항목을 선택 하세요"," ");
+secondGroup[2][2][1]=new Option("엠비씨","http://www.imbc.com");
+secondGroup[2][2][2]=new Option("케이비에쓰","http://www.kbs.com");
+
+var temp1=document.isc.stage3
+function redirect1(y){
+ for (m=temp1.options.length-1;m>0;m--)
+ temp1.options[m]=null
+ for (i=0;i<secondGroup[document.isc.example.options.selectedIndex][y].length;i++){
+  temp1.options[i]=new Option(secondGroup[document.isc.example.options.selectedIndex][y][i].text,secondGroup[document.isc.example.options.selectedIndex][y][i].value)
+ }
+ temp1.options[0].selected=true
+}
+
+//-->
+    </script>
+
+  </td>
+  </tr>
+</table>
+</FORM>
+
+
+</BODY>
+</HTML>

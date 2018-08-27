@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FormSolution</title>
+</head>
+<body>
+<h1>Register</h1>
+
+<form>
+	<p>
+	<label for="firstName">First Name:</label>
+	<input id="firstName" type="text" placeholder="John" name="name" required>
+	<label for="lastName">Last Name:</label>
+	<input id="lastName" type="text" placeholder="Smith" name="name" required>
+	</p>
+
+	<p>
+	<label for="male">Male</label>
+	<input id="male" type="radio" name="sex" value="MALE">
+	<label for="female">Female</label>
+	<input id="female" type="radio" name="sex" value="FEMALE">
+	<label for="other">other</label>
+	<input id="other" type="radio" name="sex" value="OTHER">
+	</p>
+
+	<p>
+	<label for="email">Email:</label>
+	<input id="email" type="email" name="email" placeholder="your email"required>
+	<label for="password">Password:</label>
+	<input id="password" type="password" pattern=".{5,10}" placeholder="your password" required name="password" title="5 to 10 characters">
+	</p>
+
+	
+	<p id="birthday">
+		<label for="birthday">Birthday</label>
+	<select name="month" placeholder="month">
+		<option></option>
+	</select>
+	<select name="day" placeholder="day">
+		<option></option>
+	</select>
+	<select name="year" placeholder="year">
+		<option></option>
+	</select>
+	</p>
+	<p>I agree to the terms and conditions
+		<input type="checkbox" name="agree">
+	</p>
+	<button>Submit</button>
+</form>
+
+</body>
+</html>

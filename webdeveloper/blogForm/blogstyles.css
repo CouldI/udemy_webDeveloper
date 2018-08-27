@@ -1,0 +1,32 @@
+body {
+	font-family: Source Sans Pro;
+}
+
+div {
+	width: 60%;
+	border: 20px solid #bdc3c7;
+	margin: 10px auto;
+	padding: 0 20px;
+}
+
+hr {
+	border: 2px solid #f1f1f1;
+}
+
+h2 {
+	color: #2c3e50;
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+p:nth-of-type(2) {
+	border-left: 3px solid #bdc3c7;
+	padding-left: 10px;
+}
+
+.date {
+	color: #3498db;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 5px; 
+}
